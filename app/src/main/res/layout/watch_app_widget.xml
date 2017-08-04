@@ -14,31 +14,41 @@
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="28dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="14dp"
         android:shadowColor="@android:color/black"
         android:shadowDx="3"
         android:shadowDy="2"
         android:shadowRadius="1.5"
         android:textStyle="bold"
-    />
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/appwidget_text_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/appwidget_text_top"
         android:contentDescription="@string/appwidget_text"
         android:text="亥 未 寅 子"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="28dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="14dp"
         android:shadowColor="@android:color/black"
         android:shadowDx="3"
         android:shadowDy="2"
         android:shadowRadius="1.5"
-        android:textStyle="bold"
-    />
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="28dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@+id/appwidget_text_bottom"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="3"
+        android:shadowDy="2"
+        android:shadowRadius="1.5"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

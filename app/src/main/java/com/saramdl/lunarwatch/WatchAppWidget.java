@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 import java.text.SimpleDateFormat;
@@ -65,7 +64,7 @@ public class WatchAppWidget extends AppWidgetProvider {
         {
             service = PendingIntent.getService(context, 0, si, PendingIntent.FLAG_CANCEL_CURRENT);
         }
-        Log.d("timeService", "start");
+
         m.setRepeating(AlarmManager.RTC, System.currentTimeMillis(),60000,service); // 1분마다
     }
 
