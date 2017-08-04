@@ -26,6 +26,11 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/watch_app_widget_info" />
         </receiver>
+
+        <service
+            android:name=".AlarmService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

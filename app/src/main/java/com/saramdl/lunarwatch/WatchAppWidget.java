@@ -1,8 +1,12 @@
 package com.saramdl.lunarwatch;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import java.text.SimpleDateFormat;
@@ -49,7 +53,20 @@ public class WatchAppWidget extends AppWidgetProvider {
         // There may be multiple widgets active, so update all of them
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
+            setTime(context);
         }
+    }
+
+    public void setTime(Context context){
+        PendingIntent service = null;
+        final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        final Intent si = new Intent(context, AlarmService.class);
+        if (service == null)
+        {
+            service = PendingIntent.getService(context, 0, si, PendingIntent.FLAG_CANCEL_CURRENT);
+        }
+        Log.d("timeService", "start");
+        m.setRepeating(AlarmManager.RTC, System.currentTimeMillis(),60000,service); // 1분마다
     }
 
     @Override
