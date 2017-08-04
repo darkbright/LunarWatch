@@ -10,6 +10,7 @@ import android.widget.RemoteViews;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -56,7 +57,7 @@ public class WatchAppWidget extends AppWidgetProvider {
         }
     }
 
-    public void setTime(Context context){
+    public void setTime(Context context) {
         PendingIntent service = null;
         final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         final Intent si = new Intent(context, AlarmService.class);
@@ -65,7 +66,22 @@ public class WatchAppWidget extends AppWidgetProvider {
             service = PendingIntent.getService(context, 0, si, PendingIntent.FLAG_CANCEL_CURRENT);
         }
 
-        m.setRepeating(AlarmManager.RTC, System.currentTimeMillis(),60000,service); // 1분마다
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new  SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault());
+        String strDate = calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH)
+                + "-" + calendar.get(Calendar.DAY_OF_MONTH)
+                + " " + calendar.get(Calendar.HOUR_OF_DAY)
+                + ":" + calendar.get(Calendar.MINUTE) + 1;
+        try {
+            date = dateFormat.parse(strDate);
+        } catch (Exception ex) {
+            date = new Date(now);
+        }
+
+        m.setInexactRepeating(AlarmManager.RTC, date.getTime(), 60 * 1000, service); // 1분마다
     }
 
     @Override
