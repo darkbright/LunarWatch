@@ -17,12 +17,28 @@ public class WatchAppWidget extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        Calendar cal = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
         SimpleDateFormat frm = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.KOREA);
+
+        LunarCalendar cal = new LunarCalendar();
+        cal.GYear = now.get(Calendar.YEAR);
+        cal.GMonth = now.get(Calendar.MONTH) + 1;
+        cal.GDay = now.get(Calendar.DAY_OF_MONTH);
+        cal.GHour = now.get(Calendar.HOUR_OF_DAY);
+        cal.GMinute = now.get(Calendar.MINUTE);
+        cal.convert();
+
+        String chungan = new String();
+        chungan = cal.CHour.charAt(0) + " " + cal.CDay.charAt(0) + " "
+                + cal.CMonth.charAt(0) + " " +cal.CYear.charAt(0);
+        String zizi = new String();
+        zizi = cal.CHour.charAt(1) + " " + cal.CDay.charAt(1) + " "
+                + cal.CMonth.charAt(1) + " " +cal.CYear.charAt(1);
 
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.watch_app_widget);
-        views.setTextViewText(R.id.appwidget_text, frm.format(cal.getTime()));
+        views.setTextViewText(R.id.appwidget_text_top, chungan);
+        views.setTextViewText(R.id.appwidget_text_bottom, zizi);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

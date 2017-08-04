@@ -1,21 +1,44 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#09C"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
     android:padding="@dimen/widget_margin">
 
     <TextView
-        android:id="@+id/appwidget_text"
-        android:layout_width="wrap_content"
+        android:id="@+id/appwidget_text_top"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:background="#09C"
         android:contentDescription="@string/appwidget_text"
-        android:text="@string/appwidget_text"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        android:text="己 辛 庚 丙"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="14dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="3"
+        android:shadowDy="2"
+        android:shadowRadius="1.5"
+        android:textStyle="bold"
+    />
+
+    <TextView
+        android:id="@+id/appwidget_text_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/appwidget_text"
+        android:text="亥 未 寅 子"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="28dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="14dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="3"
+        android:shadowDy="2"
+        android:shadowRadius="1.5"
+        android:textStyle="bold"
+    />
 
 </RelativeLayout>
